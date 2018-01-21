@@ -1,8 +1,11 @@
-package view;
+package view.actions;
+
+import view.Screen;
+import view.State;
 
 import java.util.Scanner;
 
-public abstract class ActionScreen extends Screen{
+public abstract class ActionScreen extends Screen {
     public ActionScreen(String title) {
         super(title);
     }

@@ -6,6 +6,10 @@ public class Machine {
 
     private State state;
 
+    public Machine(){
+        this.state = new State();
+    }
+
     public void run(){
         Scanner scanner = new Scanner(System.in);
 

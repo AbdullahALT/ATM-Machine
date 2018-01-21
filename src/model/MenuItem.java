@@ -1,5 +1,7 @@
 package model;
 
+import view.State;
+
 public class MenuItem {
 
     private String label;
@@ -11,7 +13,7 @@ public class MenuItem {
     }
 
     public interface OnChoseListener {
-        void OnChose();
+        void OnChose(State state);
     }
 
     public String getLabel() {

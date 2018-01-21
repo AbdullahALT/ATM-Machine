@@ -1,11 +1,14 @@
-package view;
+package view.menus;
 
 import model.MenuItem;
+import view.Screen;
+import view.State;
+import view.engine.Input;
 
 import java.util.List;
 import java.util.Scanner;
 
-public abstract class MenuScreen extends Screen{
+public abstract class MenuScreen extends Screen {
 
     private List<MenuItem> menuItems;
 
@@ -21,16 +24,16 @@ public abstract class MenuScreen extends Screen{
 
         printList(menuItems);
 
-        chooseItem(state);
+        chooseItem(scanner, state);
     }
 
-    private void chooseItem(State state) {
+    private void chooseItem(Scanner scanner, State state) {
         while(true){
 
-            int choice = 0;
+            int choice = Input.askForInteger("Choice: ", scanner);
 
             try{
-                menuItems.get(choice).getOnChoseListener().OnChose();
+                menuItems.get(choice - 1).getOnChoseListener().OnChose(state);
                 return;
             } catch (IndexOutOfBoundsException e){
                 System.out.println("There is no item with the number " + choice + ", please try again.");
@@ -41,11 +44,10 @@ public abstract class MenuScreen extends Screen{
     private void printList(List<MenuItem> menuItems) {
         System.out.println("Choose one of the following");
 
-        for(int i = 1; i < menuItems.size(); i++){
-            System.out.println( i + "- " + menuItems.get(i - 1).getLabel());
+        for(int i = 1; i <= menuItems.size(); i++){
+            System.out.println( "\t" + i + "- " + menuItems.get(i - 1).getLabel());
         }
 
-        System.out.println("Choice: ");
     }
 
     protected abstract List<MenuItem> initItems();
