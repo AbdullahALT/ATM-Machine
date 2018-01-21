@@ -21,7 +21,7 @@ public class DataFacade<SourceType, Result> {
         this.source = source;
         this.parser = parser;
 
-        //Using Null Object Pattern
+        //Using Nullable Object Pattern
         this.crypto = new Crypto<SourceType>() {
             @Override
             public SourceType encrypt(SourceType data) {
