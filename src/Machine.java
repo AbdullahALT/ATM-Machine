@@ -1,4 +1,6 @@
-package view;
+
+import view.Screen;
+import view.State;
 
 import java.util.Scanner;
 

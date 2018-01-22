@@ -1,18 +1,23 @@
 package model;
 
-public class Login {
+public class Login implements UserModel {
 
-    private String userId;
+    private int userId;
     private String login;
     private String password;
 
-    public Login(String userId, String login, String password) {
+    public Login(int userId, String login, String password) {
         this.userId = userId;
         this.login = login;
         this.password = password;
     }
 
-    public String getUserId() {
+    public Login(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    public int getUserId() {
         return userId;
     }
 
@@ -22,5 +27,17 @@ public class Login {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

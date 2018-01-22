@@ -20,7 +20,7 @@ public class LoginParser implements Parser<String, List<Login>>{
             reader.lines().forEach(line -> {
                 String[] parts = line.split(";");
 
-                logins.add(new Login(parts[0], parts[1], parts[2]));
+                logins.add(new Login(Integer.parseInt(parts[0]), parts[1], parts[2]));
             });
 
         } catch (IOException e){

@@ -1,9 +1,9 @@
 package model;
 
-public class Account {
+public class Account implements UserModel{
 
-    private String userId;
-    private String accountId;
+    private int userId;
+    private int accountId;
     private String name;
     private String type;
     private double balance;
@@ -17,7 +17,7 @@ public class Account {
         Active, Disabled
     }
 
-    public Account(String userId, String accountId, String name, String type, double balance, String status) {
+    public Account(int userId, int accountId, String name, String type, double balance, String status) {
         this.userId = userId;
         this.accountId = accountId;
         this.name = name;
@@ -26,19 +26,27 @@ public class Account {
         this.status = status;
     }
 
-    public String getUserId() {
+    public Account(int accountId, String name, String type, double balance, String status) {
+        this.accountId = accountId;
+        this.name = name;
+        this.type = type;
+        this.balance = balance;
+        this.status = status;
+    }
+
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(String accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 
