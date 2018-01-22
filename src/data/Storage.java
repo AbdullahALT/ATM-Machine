@@ -5,19 +5,19 @@ import data.Cryptography.Crypto;
 import data.parsers.Parser;
 import data.sources.DataSource;
 
-public class DataFacade<SourceType, Result> {
+public class Storage<SourceType, Result> {
 
     private DataSource<SourceType> source;
     private Parser<SourceType, Result> parser;
     private Crypto<SourceType> crypto;
 
-    public DataFacade(DataSource<SourceType> source, Parser<SourceType, Result> parser, Crypto<SourceType> crypto){
+    public Storage(DataSource<SourceType> source, Parser<SourceType, Result> parser, Crypto<SourceType> crypto){
         this.source = source;
         this.parser = parser;
         this.crypto = crypto;
     }
 
-    public DataFacade(DataSource<SourceType> source, Parser<SourceType, Result> parser){
+    public Storage(DataSource<SourceType> source, Parser<SourceType, Result> parser){
         this.source = source;
         this.parser = parser;
 
@@ -62,4 +62,5 @@ public class DataFacade<SourceType, Result> {
         source.exportData(encryptedData);
 
     }
+
 }
