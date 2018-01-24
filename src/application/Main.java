@@ -1,9 +1,6 @@
-package view;
+package application;
 
-import controllers.AdminController;
-import controllers.AuthenticationController;
-import controllers.Controller;
-import controllers.CustomerController;
+import controllers.*;
 import controllers.manager.Manager;
 import controllers.manager.ManagerFactory;
 import model.Account;
@@ -11,6 +8,7 @@ import model.Login;
 import model.Transaction;
 import storage.Storage;
 import storage.StorageFactory;
+import view.Machine;
 
 import java.util.List;
 
@@ -32,6 +30,9 @@ public class Main {
         Manager<Login> loginManager = ManagerFactory.getLoginManager(loginStorage.read());
         Manager<Transaction> transactionManager = ManagerFactory.getTransactionManager(transactionStorage.read());
 
+        if(accountManager.getList().size() == 0 || loginManager.getList().size() == 0)
+            SeedStorage(accountStorage, loginStorage, accountManager, loginManager);
+
         // Give the managers to the controllers to strict access to managers and give specific actions
         AdminController adminController = new AdminController(accountManager, transactionManager, loginManager);
         CustomerController customerController = new CustomerController(accountManager, transactionManager);
@@ -46,6 +47,24 @@ public class Main {
         accountStorage.write(accountManager.getList());
         loginStorage.write(loginManager.getList());
         transactionStorage.write(transactionManager.getList());
+    }
+
+    static void SeedStorage(Storage<String, List<Account>> accountStorage,
+                            Storage<String, List<Login>> loginStorage,
+                            Manager<Account> accountManager,
+                            Manager<Login> loginManager){
+
+        //A current user of admin needed to create users
+        CurrentUser.instance().set(new Login("admin", null));
+
+        //for now, just seed the admin
+        accountManager.insert(new Account("admin", Account.Type.Current, 1000.0, Account.Status.Active));
+        loginManager.insert(new Login("admin", "admin"));
+        accountStorage.write(accountManager.getList());
+        loginStorage.write(loginManager.getList());
+
+        //Reset the current user
+        CurrentUser.instance().set(null);
     }
 
 }
