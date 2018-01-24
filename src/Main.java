@@ -1,6 +1,9 @@
 package view;
 
-import controllers.*;
+import controllers.AdminController;
+import controllers.AuthenticationController;
+import controllers.Controller;
+import controllers.CustomerController;
 import controllers.manager.Manager;
 import controllers.manager.ManagerFactory;
 import model.Account;
@@ -13,9 +16,9 @@ import java.util.List;
 
 public class Main {
 
-    static String accountsSource = "Path to Accounts.txt file";
-    static String loginsSource = "Path to Logins.txt file";
-    static String transactionsSource = "Path to Transactions.txt file";
+    static String accountsSource = "C:/Users/abaaltamimi/Desktop/Accounts.txt";
+    static String loginsSource = "C:/Users/abaaltamimi/Desktop/Logins.txt";
+    static String transactionsSource = "C:/Users/abaaltamimi/Desktop/Transfer.txt";
 
     public static void main(String... args){
 
@@ -28,10 +31,6 @@ public class Main {
         Manager<Account> accountManager = ManagerFactory.getAccountManager(accountStorage.read());
         Manager<Login> loginManager = ManagerFactory.getLoginManager(loginStorage.read());
         Manager<Transaction> transactionManager = ManagerFactory.getTransactionManager(transactionStorage.read());
-
-        //If this is the first run of the application, seed the data storage
-        if(loginManager.getList().size() == 0 || accountManager.getList().size() == 0)
-            SeedStorage(accountStorage, loginStorage, accountManager, loginManager);
 
         // Give the managers to the controllers to strict access to managers and give specific actions
         AdminController adminController = new AdminController(accountManager, transactionManager, loginManager);
@@ -47,24 +46,6 @@ public class Main {
         accountStorage.write(accountManager.getList());
         loginStorage.write(loginManager.getList());
         transactionStorage.write(transactionManager.getList());
-    }
-
-    static void SeedStorage(Storage<String, List<Account>> accountStorage,
-                                   Storage<String, List<Login>> loginStorage,
-                                   Manager<Account> accountManager,
-                                   Manager<Login> loginManager){
-
-        //A current user of admin needed to create users
-        CurrentUser.instance().set(new Login("admin", null));
-
-        //for now, just seed the admin
-        accountManager.insert(new Account("admin", Account.Type.Current, 1000.0, Account.Status.Active));
-        loginManager.insert(new Login("admin", "admin"));
-        accountStorage.write(accountManager.getList());
-        loginStorage.write(loginManager.getList());
-
-        //Reset the current user
-        CurrentUser.instance().set(null);
     }
 
 }
