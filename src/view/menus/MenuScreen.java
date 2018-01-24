@@ -1,9 +1,10 @@
 package view.menus;
 
+import controllers.Controller;
 import model.MenuItem;
+import view.Input;
 import view.Screen;
 import view.State;
-import view.engine.Input;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public abstract class MenuScreen extends Screen {
     }
 
     @Override
-    public void show(Scanner scanner, State state) throws EmptyMenuScreenException{
+    public void show(Scanner scanner, State state, Controller controller) throws EmptyMenuScreenException{
         if(menuItems == null || menuItems.size() == 0)
             throw new EmptyMenuScreenException("Menu items list is either null or has no items. make sure to initiate items using initItems() method");
 

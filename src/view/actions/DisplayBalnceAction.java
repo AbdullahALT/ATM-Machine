@@ -1,5 +1,6 @@
 package view.actions;
 
+import controllers.Controller;
 import view.State;
 
 import java.util.Scanner;
@@ -11,8 +12,8 @@ public class DisplayBalnceAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner) {
-        System.out.println("Coming Soon");
+    protected void invokeAction(Scanner scanner, Controller controller) {
+        controller.getCustomerController().displayBalance();
     }
 
     @Override

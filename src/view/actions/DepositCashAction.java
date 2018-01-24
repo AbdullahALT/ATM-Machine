@@ -1,5 +1,8 @@
 package view.actions;
 
+import controllers.Controller;
+import controllers.manager.Response;
+import view.Input;
 import view.State;
 
 import java.util.Scanner;
@@ -11,8 +14,24 @@ public class DepositCashAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner) {
-        System.out.println("Coming Soon");
+    protected void invokeAction(Scanner scanner, Controller controller) {
+
+        double amount = Input.askForDouble("Enter the cash amount to deposit: ", scanner);
+
+        Response response = controller.getCustomerController().deposit(amount);
+
+        if(response.isSuccess()) {
+
+            System.out.println("Cash Deposited Successfully.");
+            boolean printRecipe = Input.askForBoolean("Would you like to print a recipe?", scanner);
+
+            if(printRecipe){
+                controller.getCustomerController().displayBalance("Deposited: " + amount);
+            }
+
+        }
+        else
+            System.out.println(response.getMessage());
     }
 
     @Override

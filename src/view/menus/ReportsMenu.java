@@ -14,8 +14,8 @@ public class ReportsMenu extends MenuScreen {
     @Override
     protected List<MenuItem> initItems() {
         LinkedList<MenuItem> items = new LinkedList<>();
-        items.add(new MenuItem("Balance Report", state -> state.setCurrentScreen(state.getBalanceReportAction())));
-        items.add(new MenuItem("Date Report", state -> state.setCurrentScreen(state.getDateReportAction())));
+        items.add(new MenuItem("Balance Report", state -> state.setCurrentScreen(state.getAccountsBalanceReportAction())));
+        items.add(new MenuItem("Date Report", state -> state.setCurrentScreen(state.getAccountsTransactionReportAction())));
         items.add(new MenuItem("Exit", state -> state.exit()));
 
         return items;

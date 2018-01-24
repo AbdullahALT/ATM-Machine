@@ -1,5 +1,6 @@
 package view.actions;
 
+import controllers.Controller;
 import view.State;
 
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class PrintRecipeAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner) {
+    protected void invokeAction(Scanner scanner, Controller controller) {
         System.out.println("Coming Soon");
     }
 

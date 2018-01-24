@@ -9,6 +9,7 @@ import view.menus.WithdrawCashMenu;
 public class State {
 
     private Screen currentScreen;
+    private boolean halt;
 
     private Screen loginScreen = new LoginAction();
 
@@ -21,8 +22,8 @@ public class State {
     private Screen deleteAccountAction = new DeleteAccountAction();
     private Screen updateAccountAction = new UpdateUserAction();
     private Screen searchAccountAction = new SearchAccountAction();
-    private Screen balanceReportAction = new BalanceReportAction();
-    private Screen dateReportAction = new DateReportAction();
+    private Screen accountsBalanceReportAction = new AccountsBalanceReportAction();
+    private Screen accountsTransactionReportAction = new AccountsTransactionReportAction();
 
     private Screen normalWithdrawAction = new NormalWithdrawAction();
     private Screen fastWithdrawAction = new FastWithdrawAction();
@@ -33,6 +34,7 @@ public class State {
 
     public State() {
         this.currentScreen = loginScreen;
+        this.halt = false;
     }
 
     public Screen getCurrentScreen() {
@@ -40,7 +42,7 @@ public class State {
     }
 
     public void exit(){
-        System.exit(0);
+        halt = true;
     }
 
     public void setCurrentScreen(Screen screen){
@@ -83,12 +85,12 @@ public class State {
         return searchAccountAction;
     }
 
-    public Screen getBalanceReportAction() {
-        return balanceReportAction;
+    public Screen getAccountsBalanceReportAction() {
+        return accountsBalanceReportAction;
     }
 
-    public Screen getDateReportAction() {
-        return dateReportAction;
+    public Screen getAccountsTransactionReportAction() {
+        return accountsTransactionReportAction;
     }
 
     public Screen getNormalWithdrawAction() {
@@ -113,5 +115,9 @@ public class State {
 
     public Screen getPrintRecipe() {
         return printRecipe;
+    }
+
+    public boolean isHalt() {
+        return halt;
     }
 }

@@ -1,7 +1,9 @@
 package view.actions;
 
+import controllers.Controller;
+import controllers.manager.Response;
+import view.Input;
 import view.State;
-import view.engine.Input;
 
 import java.util.Scanner;
 
@@ -14,13 +16,20 @@ public class LoginAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner) {
-        String login = Input.askForString("Login: ", scanner);
-        String password = Input.askForString("Password: ", scanner);
+    protected void invokeAction(Scanner scanner, Controller controller) {
+        boolean loop = true;
+        while(loop) {
+            String login = Input.askForString("Login: ", scanner);
+            String password = Input.askForString("Password: ", scanner);
 
-        //TODO: Authenticate user here.
+            //TODO: Authenticate user here.
+            Response response = controller.getAuthenticationController().authenticate(login, password);
+            loop = !response.isSuccess();
 
-        isAdmin = login.equals("admin");
+            System.out.println(response.getMessage());
+
+            isAdmin = login.equals("admin");
+        }
     }
 
     @Override

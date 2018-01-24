@@ -1,5 +1,9 @@
 package view.actions;
 
+import controllers.Controller;
+import controllers.manager.Response;
+import model.Account;
+import view.Input;
 import view.State;
 
 import java.util.Scanner;
@@ -11,8 +15,34 @@ public class CashTransferAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner) {
-        System.out.println("Coming Soon");
+    protected void invokeAction(Scanner scanner, Controller controller) {
+
+        int accountId = Input.askForInteger("Enter the account number to which you want to transfer: ", scanner);
+        double amount = Input.askForDouble("Enter amount in multiples of 500: ", scanner);
+
+        while(amount % 500 != 0){
+            amount = Input.askForDouble("The amount should be in multiples of 500, enter again: ", scanner);
+        }
+
+        Account holder = controller.getCustomerController().getAccount(accountId);
+
+        if(holder != null){
+            int confirm = Input.askForInteger("You wish to deposit Rs " + amount + " in account held by " + holder.getName()+ " ; If this "+
+                    "information is correct please re-enter the account number: ", scanner);
+            if(confirm != accountId)
+                return;
+        }
+
+        Response response = controller.getCustomerController().transfer(amount, accountId);
+        System.out.println(response.getMessage());
+
+        if(response.isSuccess()){
+            boolean printRecipe = Input.askForBoolean("Would you like to print a recipe?", scanner);
+
+            if(printRecipe){
+                controller.getCustomerController().displayBalance("Transferred: " + amount);
+            }
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package view.actions;
 
+import controllers.Controller;
 import view.Screen;
 import view.State;
 
@@ -11,12 +12,12 @@ public abstract class ActionScreen extends Screen {
     }
 
     @Override
-    public void show(Scanner scanner, State state) {
-        invokeAction(scanner);
+    public void show(Scanner scanner, State state, Controller controller) {
+        invokeAction(scanner, controller);
         finish(state);
     }
 
-    protected abstract void invokeAction(Scanner scanner);
+    protected abstract void invokeAction(Scanner scanner, Controller controller);
 
     protected abstract void finish(State state);
 }

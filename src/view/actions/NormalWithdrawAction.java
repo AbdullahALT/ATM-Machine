@@ -1,5 +1,8 @@
 package view.actions;
 
+import controllers.Controller;
+import controllers.manager.Response;
+import view.Input;
 import view.State;
 
 import java.util.Scanner;
@@ -11,8 +14,24 @@ public class NormalWithdrawAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner) {
-        System.out.println("Coming Soon");
+    protected void invokeAction(Scanner scanner, Controller controller) {
+
+        double amount = Input.askForDouble("Enter the withdrawal amount: ", scanner);
+
+        Response response = controller.getCustomerController().withdraw(amount);
+
+        if(!response.isSuccess()) {
+            System.out.println(response.getMessage());
+            return;
+        }
+
+        boolean printRecipe = Input.askForBoolean("Would you like to print a recipe?", scanner);
+
+        if(printRecipe){
+            controller.getCustomerController().displayBalance("Withdrawn: " + amount);
+        }
+
+        System.out.println("Cash Successfully Withdrawn!");
     }
 
     @Override

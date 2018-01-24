@@ -1,5 +1,7 @@
 package view;
 
+import controllers.Controller;
+
 import java.util.Scanner;
 
 public abstract class Screen {
@@ -14,5 +16,5 @@ public abstract class Screen {
         return title;
     }
 
-    public abstract void show(Scanner scanner, State state) throws Exception;
+    public abstract void show(Scanner scanner, State state, Controller controller) throws Exception;
 }
