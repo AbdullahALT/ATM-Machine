@@ -9,6 +9,10 @@ import view.State;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * A menu screen is a screen that only shows a list of other
+ * screens and asks the user to witch one he wants to got to
+ */
 public abstract class MenuScreen extends Screen {
 
     private List<MenuItem> menuItems;

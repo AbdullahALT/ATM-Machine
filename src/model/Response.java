@@ -1,5 +1,8 @@
-package controllers.manager;
+package model;
 
+/**
+ * Holds information about results of methods that may fail
+ */
 public class Response {
 
     private boolean isSuccess;

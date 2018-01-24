@@ -1,6 +1,7 @@
 package controllers.manager;
 
 import model.Login;
+import model.Response;
 import storage.Storage;
 
 import java.util.List;

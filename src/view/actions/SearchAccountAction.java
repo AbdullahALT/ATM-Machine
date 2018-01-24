@@ -13,7 +13,7 @@ public class SearchAccountAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
 
         int accountId = Input.askForIntegerWithDefault("Account ID: ", scanner, -1);
         int userId = Input.askForIntegerWithDefault("User ID: ", scanner, -1);

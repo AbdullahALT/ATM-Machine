@@ -4,14 +4,17 @@ import controllers.Controller;
 
 import java.util.Scanner;
 
+/**
+ * The ATM machine, it will show the current screen and takes the controller
+ * to give the action screens something to manipulate the data with.
+ *
+ */
 public class Machine {
 
     private State state;
-    private boolean halt;
 
     public Machine(){
         this.state = new State();
-        this.halt = false;
     }
 
     public void run(Controller controller){
@@ -31,7 +34,4 @@ public class Machine {
         }
     }
 
-    public void halt(){
-        this.halt = true;
-    }
 }

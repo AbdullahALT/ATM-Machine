@@ -6,6 +6,11 @@ import view.menus.CustomerMenu;
 import view.menus.ReportsMenu;
 import view.menus.WithdrawCashMenu;
 
+/**
+ * An implementation of the State Design Pattern, using this pattern
+ * we can easily make new screens and make interactions with them.
+ * A state represents the state of the machine, what is the current screen and has the machine halted or not
+ */
 public class State {
 
     private Screen currentScreen;
@@ -30,7 +35,6 @@ public class State {
     private Screen cashTransfer = new CashTransferAction();
     private Screen depositCash = new DepositCashAction();
     private Screen displayBalance = new DisplayBalnceAction();
-    private Screen printRecipe = new PrintRecipeAction();
 
     public State() {
         this.currentScreen = loginScreen;
@@ -111,10 +115,6 @@ public class State {
 
     public Screen getDisplayBalance() {
         return displayBalance;
-    }
-
-    public Screen getPrintRecipe() {
-        return printRecipe;
     }
 
     public boolean isHalt() {

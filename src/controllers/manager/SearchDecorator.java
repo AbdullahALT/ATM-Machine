@@ -1,5 +1,7 @@
 package controllers.manager;
 
+import model.Response;
+
 import java.util.List;
 
 public class SearchDecorator<DataModel> implements Manager<DataModel> {

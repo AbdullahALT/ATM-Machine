@@ -1,7 +1,7 @@
 package view.actions;
 
 import controllers.Controller;
-import controllers.manager.Response;
+import model.Response;
 import view.Input;
 import view.State;
 
@@ -14,7 +14,7 @@ public class NormalWithdrawAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
 
         double amount = Input.askForDouble("Enter the withdrawal amount: ", scanner);
 

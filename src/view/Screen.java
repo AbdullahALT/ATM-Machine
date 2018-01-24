@@ -4,6 +4,9 @@ import controllers.Controller;
 
 import java.util.Scanner;
 
+/**
+ * Anything that appears in the console screen, its a simulation of views in web design
+ */
 public abstract class Screen {
 
     private String title;

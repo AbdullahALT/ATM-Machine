@@ -1,5 +1,8 @@
 package controllers;
 
+/**
+ * Holds the application's controllers in one object, a lazy simulation of the Context Design Pattern
+ */
 public class Controller {
 
     public AdminController adminController;

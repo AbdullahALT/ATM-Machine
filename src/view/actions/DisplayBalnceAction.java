@@ -12,7 +12,7 @@ public class DisplayBalnceAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
         controller.getCustomerController().displayBalance();
     }
 

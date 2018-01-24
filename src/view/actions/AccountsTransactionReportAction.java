@@ -17,7 +17,7 @@ public class AccountsTransactionReportAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
 
         int accountId = Input.askForInteger("Enter the account id: ", scanner);
         Date min = Input.askForDate("Enter the starting date: ", scanner);

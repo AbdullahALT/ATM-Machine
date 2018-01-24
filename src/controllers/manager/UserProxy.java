@@ -1,11 +1,16 @@
 package controllers.manager;
 
 import controllers.CurrentUser;
+import model.Response;
 import model.UserModel;
 
 import java.util.List;
 
-// Implementation of Protection Proxy
+/**
+ * Both the Account and User Managers have the same set of rules for defining remove, insert, and update
+ * Using the Protection Proxy pattern save us from duplicate codes
+ * @param <Model>
+ */
 public class UserProxy<Model extends UserModel> implements Manager<Model> {
 
     private Manager<Model> manager;

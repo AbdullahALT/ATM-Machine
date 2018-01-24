@@ -1,9 +1,9 @@
 package view.actions;
 
 import controllers.Controller;
-import controllers.manager.Response;
 import model.Account;
 import model.Login;
+import model.Response;
 import view.Input;
 import view.State;
 
@@ -16,7 +16,7 @@ public class CreateAccountAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
         String login = Input.askForString("Login: ", scanner);
         String password = Input.askForString("Pin Code: ", scanner);
         String holderName = Input.askForString("Holder's Name: ", scanner);

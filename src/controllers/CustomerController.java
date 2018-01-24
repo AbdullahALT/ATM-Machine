@@ -1,8 +1,8 @@
 package controllers;
 
 import controllers.manager.Manager;
-import controllers.manager.Response;
 import model.Account;
+import model.Response;
 import model.Transaction;
 
 import java.text.SimpleDateFormat;

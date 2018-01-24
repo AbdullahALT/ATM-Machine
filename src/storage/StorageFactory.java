@@ -11,6 +11,10 @@ import storage.sources.FileDataSource;
 
 import java.util.List;
 
+/**
+ * Encapsulate the creation of Storage objects, This class makes sense in the ATM Machine context where
+ * we know how many storages we have and each one have specific parameters, so why don't we encapsulate all of that using th Factory Design Pattern?
+ */
 public class StorageFactory {
 
     public static Storage<String, List<Login>> getLoginStorage(String path){

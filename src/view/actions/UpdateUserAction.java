@@ -1,8 +1,8 @@
 package view.actions;
 
 import controllers.Controller;
-import controllers.manager.Response;
 import model.Account;
+import model.Response;
 import view.Input;
 import view.State;
 
@@ -15,7 +15,7 @@ public class UpdateUserAction extends ActionScreen{
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
         int accountId = Input.askForInteger("Enter the Account Number: ", scanner);
 
         Account account = controller.getCustomerController().getAccount(accountId);

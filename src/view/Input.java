@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * A simulation of Controller Inputs from Templating Engines used in web development frameworks, mostly MVC frameworks
+ */
 public class Input {
 
     public static boolean askForBoolean(String message, @NotNull Scanner scanner){
@@ -77,6 +80,7 @@ public class Input {
         }
     }
 
+    //Lol
     public static Date askForDate(String message, @NotNull Scanner scanner){
         while(true){
             String input = askForString(message, scanner);

@@ -1,8 +1,14 @@
 package controllers.manager;
 
+import model.Response;
+
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Implement some common functionalities that every Manager should have.
+ * @param <DataModel>: The type of the data to be managed
+ */
 public abstract class DataManager<DataModel> implements Manager<DataModel>{
 
     private List<DataModel> list;

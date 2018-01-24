@@ -1,8 +1,8 @@
 package controllers;
 
 import controllers.manager.Manager;
-import controllers.manager.Response;
 import model.Login;
+import model.Response;
 
 public class AuthenticationController {
 

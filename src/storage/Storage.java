@@ -5,6 +5,14 @@ import storage.Cryptography.Crypto;
 import storage.parsers.Parser;
 import storage.sources.DataSource;
 
+/**
+ * This class dose not know from where the data are coming, how are they parsed, and how the are encrypted. it just call the responsible objects
+ * in the order needed and help making interaction between them.
+ *
+ * Simply put, it helps encapsulating the way the application interact with shortages
+ * @param <SourceType>
+ * @param <Result>
+ */
 public class Storage<SourceType, Result> {
 
     private DataSource<SourceType> source;

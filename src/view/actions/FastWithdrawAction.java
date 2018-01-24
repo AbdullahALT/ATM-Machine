@@ -1,7 +1,7 @@
 package view.actions;
 
 import controllers.Controller;
-import controllers.manager.Response;
+import model.Response;
 import view.Input;
 import view.State;
 
@@ -15,7 +15,7 @@ public class FastWithdrawAction extends ActionScreen{
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
         System.out.println("1----500");
         System.out.println("2----1000");
         System.out.println("3----2000");

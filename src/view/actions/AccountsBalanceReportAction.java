@@ -15,7 +15,7 @@ public class AccountsBalanceReportAction extends ActionScreen {
     }
 
     @Override
-    protected void invokeAction(Scanner scanner, Controller controller) {
+    protected void start(Scanner scanner, Controller controller) {
         double min = Input.askForDouble("Enter the minimum amount: ", scanner);
         double max = Input.askForDouble("Enter the maximum amount: ", scanner);
 

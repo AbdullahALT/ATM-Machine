@@ -1,10 +1,10 @@
 package controllers;
 
 import controllers.manager.Manager;
-import controllers.manager.Response;
 import controllers.manager.SearchDecorator;
 import model.Account;
 import model.Login;
+import model.Response;
 import model.Transaction;
 
 import java.util.Date;
