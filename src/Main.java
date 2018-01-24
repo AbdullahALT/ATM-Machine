@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Main {
 
-    static String accountsSource = "C:/Users/abaaltamimi/Desktop/Accounts.txt";
-    static String loginsSource = "C:/Users/abaaltamimi/Desktop/Logins.txt";
-    static String transactionsSource = "C:/Users/abaaltamimi/Desktop/Transfer.txt";
+    static String accountsSource = "Path to Accounts.txt file";
+    static String loginsSource = "Path to Logins.txt file";
+    static String transactionsSource = "Path to Transactions.txt file";
 
     public static void main(String... args){
 
