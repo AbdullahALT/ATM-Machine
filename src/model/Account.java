@@ -26,8 +26,7 @@ public class Account implements UserModel{
         this.status = status;
     }
 
-    public Account(int accountId, String name, String type, double balance, String status) {
-        this.accountId = accountId;
+    public Account(String name, String type, double balance, String status) {
         this.name = name;
         this.type = type;
         this.balance = balance;
@@ -84,13 +83,10 @@ public class Account implements UserModel{
 
     @Override
     public String toString() {
-        return "Account{" +
-                "userId='" + userId + '\'' +
-                ", accountId='" + accountId + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", balance=" + balance +
-                ", status='" + status + '\'' +
-                '}';
+        return "Account #" + accountId + "\n" +
+                "Type: " + type + "\n" +
+                "Holder: " + name + "\n" +
+                "Balance: " + balance + "\n" +
+                "Status: " + status;
     }
 }

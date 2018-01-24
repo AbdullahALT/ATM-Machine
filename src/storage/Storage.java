@@ -1,9 +1,9 @@
-package data;
+package storage;
 
 
-import data.Cryptography.Crypto;
-import data.parsers.Parser;
-import data.sources.DataSource;
+import storage.Cryptography.Crypto;
+import storage.parsers.Parser;
+import storage.sources.DataSource;
 
 public class Storage<SourceType, Result> {
 
@@ -37,13 +37,13 @@ public class Storage<SourceType, Result> {
 
     public Result read(){
 
-        //Load from a data source
+        //Load from a storage storage
         SourceType data = source.importData();
 
-        //Decrypt the data taken from the source
+        //Decrypt the storage taken from the storage
         SourceType decryptedData = crypto.decrypt(data);
 
-        //Transform the data to something we can manipulate
+        //Transform the storage to something we can manipulate
         Result result = parser.parseData(decryptedData);
 
         return result;
@@ -52,13 +52,13 @@ public class Storage<SourceType, Result> {
 
     public void write(Result result){
 
-        //Unparse the result, return it to the form that the source is familiar with
+        //Unparse the result, return it to the form that the storage is familiar with
         SourceType data = parser.unparseData(result);
 
-        //Encrypt the data
+        //Encrypt the storage
         SourceType encryptedData = crypto.encrypt(data);
 
-        //Export the data back to the source
+        //Export the storage back to the storage
         source.exportData(encryptedData);
 
     }

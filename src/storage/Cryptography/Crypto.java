@@ -1,4 +1,4 @@
-package data.Cryptography;
+package storage.Cryptography;
 
 public interface Crypto<SourceType> {
     SourceType encrypt(SourceType data);

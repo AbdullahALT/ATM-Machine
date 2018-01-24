@@ -1,8 +1,8 @@
-package data.Cryptography;
+package storage.Cryptography;
 
 public class SwapCrypto implements Crypto<String> {
 
-    String text = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    String text =   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     String mirror = "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA9876543210";
 
     @Override

@@ -1,4 +1,4 @@
-package data.parsers;
+package storage.parsers;
 
 import model.Transaction;
 
@@ -21,7 +21,7 @@ public class TransactionParser implements Parser<String, List<Transaction>> {
             reader.lines().forEach(line -> {
                 String[] parts = line.split(";");
 
-                SimpleDateFormat date = new SimpleDateFormat("dd/mm/yyyy");
+                SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
 
                 try {
 
@@ -43,7 +43,7 @@ public class TransactionParser implements Parser<String, List<Transaction>> {
     @Override
     public String unparseData(List<Transaction> transactions) {
         StringBuilder builder = new StringBuilder();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         transactions.forEach(transaction -> {
             builder.append(transaction.getUserId()).append(';');

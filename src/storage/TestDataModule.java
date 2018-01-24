@@ -1,4 +1,4 @@
-package data;
+package storage;
 
 import model.Account;
 import model.Login;
@@ -47,10 +47,10 @@ public class TestDataModule {
         System.out.println("Transfers Current Content");
         transfers.forEach(transfer -> System.out.println(transfer.toString()));
 
-        transfers.add(new Transaction(1, "", Transaction.Type.Withdraw, 10.5, new Date()));
-        transfers.add(new Transaction(1, "", Transaction.Type.Withdraw,10.5, new Date()));
-        transfers.add(new Transaction(1, "", Transaction.Type.Withdraw,10.5, new Date()));
-        transfers.add(new Transaction(1, "", Transaction.Type.Withdraw,10.5, new Date()));
+        transfers.add(new Transaction(1, "User Name", Transaction.Type.Withdraw, 10.5, new Date()));
+        transfers.add(new Transaction(1, "User Name", Transaction.Type.Withdraw,10.5, new Date()));
+        transfers.add(new Transaction(1, "User Name", Transaction.Type.Withdraw,10.5, new Date()));
+        transfers.add(new Transaction(1, "User Name", Transaction.Type.Withdraw,10.5, new Date()));
 
         transferFacade.write(transfers);
     }

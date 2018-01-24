@@ -1,4 +1,4 @@
-package data.parsers;
+package storage.parsers;
 
 public interface Parser<SourceType, Result> {
     
