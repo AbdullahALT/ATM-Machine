@@ -92,6 +92,37 @@ public class Input {
         }
     }
 
+    public static String askForSpecificString(String message, @NotNull Scanner scanner, String[] values){
+        while (true){
+            String input = askForString(message, scanner);
+
+            for(String value : values){
+                if(value.toLowerCase().equals(input.toLowerCase())){
+                    return value;
+                }
+            }
+
+            System.out.println("You didn't type a valid value");
+        }
+    }
+
+    public static String askForSpecificStringWithDefault(String message, @NotNull Scanner scanner, String[] values, String defautValue){
+        while (true){
+            String input = askForString(message, scanner);
+
+            if(input.equals(""))
+                return defautValue;
+
+            for(String value : values){
+                if(value.toLowerCase().equals(input.toLowerCase())){
+                    return value;
+                }
+            }
+
+            System.out.println("You didn't type a valid value");
+        }
+    }
+
     public static String askForString(String message, @NotNull Scanner scanner){
         while(true){
             try{

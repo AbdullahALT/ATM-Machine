@@ -20,11 +20,11 @@ public class CreateAccountAction extends ActionScreen {
         String login = Input.askForString("Login: ", scanner);
         String password = Input.askForString("Pin Code: ", scanner);
         String holderName = Input.askForString("Holder's Name: ", scanner);
-        String type = Input.askForString("Type (Savings,Current): ", scanner);
+        String type = Input.askForSpecificString("Type (Savings,Current): ", scanner, Account.getTypes());
         double amount = Input.askForDouble("Starting Balance: ", scanner);
-        String status = Input.askForString("Status: ", scanner);
+        String status = Input.askForSpecificString("Status: ", scanner, Account.getStatuses());
 
-        Response response = controller.getAdminController().createUser(new Login(login, password), new Account(holderName, type, amount, status));
+        Response response = controller.getAdminController().createUser(new Login(login, password), new Account(holderName, Account.Type.valueOf(type), amount, Account.Status.valueOf(status)));
 
         System.out.println(response.getMessage());
     }

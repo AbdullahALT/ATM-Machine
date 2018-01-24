@@ -18,11 +18,14 @@ public class SearchAccountAction extends ActionScreen {
         int accountId = Input.askForIntegerWithDefault("Account ID: ", scanner, -1);
         int userId = Input.askForIntegerWithDefault("User ID: ", scanner, -1);
         String holderName = Input.askForString("Holders Name: ", scanner);
-        String type = Input.askForString("Type: ", scanner);
-        double balance = Input.askForDoubleWithDefault("Balance: ", scanner, -1);
-        String status = Input.askForString("Status: ", scanner);
 
-        controller.getAdminController().searchAccounts(new Account(userId, accountId, holderName, type, balance, status )).print();
+        String type = Input.askForSpecificStringWithDefault("Type: ", scanner, Account.getTypes(), "");
+        double balance = Input.askForDoubleWithDefault("Balance: ", scanner, -1);
+
+        String status = Input.askForSpecificStringWithDefault("Status: ", scanner, Account.getStatuses(), "");
+
+        controller.getAdminController()
+                .searchAccounts(userId, accountId, holderName, type, balance, status).print();
 
     }
 

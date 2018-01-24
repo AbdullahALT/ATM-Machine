@@ -20,7 +20,7 @@ public class AccountParser implements Parser<String, List<Account>>{
 
             String[] parts = line.split(";");
 
-            accounts.add(new Account(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), parts[2], parts[3], Double.parseDouble(parts[4]), parts[5]));
+            accounts.add(new Account(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), parts[2], Account.Type.valueOf(parts[3]), Double.parseDouble(parts[4]), Account.Status.valueOf(parts[5])));
 
         });
 

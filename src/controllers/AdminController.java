@@ -50,26 +50,26 @@ public class AdminController {
     }
 
     //search accounts
-    public Manager<Account> searchAccounts(Account account){
+    public Manager<Account> searchAccounts(int userId, int accountId, String holderName, String type, double balance, String status){
         SearchDecorator.Builder<Account> searchBuilder = new SearchDecorator.Builder<>(accountManager);
 
-        if(account.getUserId() != -1)
-            searchBuilder.addQuery(u -> u.getUserId() == account.getUserId());
+        if(userId != -1)
+            searchBuilder.addQuery(u -> u.getUserId() == userId);
 
-        if(account.getAccountId() != -1)
-            searchBuilder.addQuery(u -> u.getAccountId() == account.getAccountId());
+        if(accountId != -1)
+            searchBuilder.addQuery(u -> u.getAccountId() == accountId);
 
-        if(account.getBalance() != -1)
-            searchBuilder.addQuery(u -> u.getBalance() == account.getBalance());
+        if(balance != -1)
+            searchBuilder.addQuery(u -> u.getBalance() == balance);
 
-        if(!account.getStatus().equals(""))
-            searchBuilder.addQuery(u -> u.getStatus().equals(account.getStatus()));
+        if(!status.equals(""))
+            searchBuilder.addQuery(u -> u.getStatus().equals(Account.Status.valueOf(status)));
 
-        if(!account.getName().equals(""))
-            searchBuilder.addQuery(u -> u.getName().equals(account.getName()));
+        if(!holderName.equals(""))
+            searchBuilder.addQuery(u -> u.getName().equals(holderName));
 
-        if(!account.getType().equals(""))
-            searchBuilder.addQuery(u -> u.getType().equals(account.getType()));
+        if(!type.equals(""))
+            searchBuilder.addQuery(u -> u.getType().equals(Account.Type.valueOf(type)));
 
         return searchBuilder.build();
     }
@@ -95,7 +95,7 @@ public class AdminController {
             account.setName(holderName);
 
         if(!status.equals(""))
-            account.setStatus(status);
+            account.setStatus(Account.Status.valueOf(status));
 
         Response accountResponse = accountManager.update(account);
         Response loginResponse = loginManager.update(login);
