@@ -1,7 +1,7 @@
 package controllers;
 
-import controllers.manager.Manager;
-import controllers.manager.SearchDecorator;
+import manager.Manager;
+import manager.SearchDecorator;
 import model.Account;
 import model.Login;
 import model.Response;

@@ -1,4 +1,4 @@
-package controllers.manager;
+package manager;
 
 import model.Account;
 import model.Response;
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AccountsManager extends DataManager<Account> {
 
-    public AccountsManager(List<Account> list) {
+     AccountsManager(List<Account> list) {
         super(list);
     }
 

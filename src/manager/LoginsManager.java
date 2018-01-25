@@ -1,4 +1,4 @@
-package controllers.manager;
+package manager;
 
 import model.Login;
 import model.Response;
@@ -10,7 +10,7 @@ public class LoginsManager extends DataManager<Login> {
 
     private Storage<String, List<Login>> storage;
 
-    public LoginsManager(List<Login> list) {
+     LoginsManager(List<Login> list) {
         super(list);
     }
 

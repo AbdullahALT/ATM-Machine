@@ -1,6 +1,7 @@
 package controllers;
 
-import controllers.manager.Manager;
+import manager.Manager;
+import model.CurrentUser;
 import model.Login;
 import model.Response;
 

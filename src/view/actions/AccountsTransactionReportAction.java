@@ -1,7 +1,7 @@
 package view.actions;
 
 import controllers.Controller;
-import controllers.manager.Manager;
+import manager.Manager;
 import model.Account;
 import model.Transaction;
 import view.Input;

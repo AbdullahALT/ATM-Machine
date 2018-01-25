@@ -1,9 +1,13 @@
 package application;
 
-import controllers.*;
-import controllers.manager.Manager;
-import controllers.manager.ManagerFactory;
+import controllers.AdminController;
+import controllers.AuthenticationController;
+import controllers.Controller;
+import controllers.CustomerController;
+import manager.Manager;
+import manager.ManagerFactory;
 import model.Account;
+import model.CurrentUser;
 import model.Login;
 import model.Transaction;
 import storage.Storage;

@@ -1,8 +1,9 @@
 package controllers;
 
-import controllers.manager.Manager;
-import controllers.manager.SearchDecorator;
+import manager.Manager;
+import manager.SearchDecorator;
 import model.Account;
+import model.CurrentUser;
 import model.Response;
 import model.Transaction;
 

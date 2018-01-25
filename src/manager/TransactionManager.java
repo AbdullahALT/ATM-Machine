@@ -1,4 +1,4 @@
-package controllers.manager;
+package manager;
 
 import model.Response;
 import model.Transaction;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TransactionManager extends DataManager<Transaction> {
 
-    public TransactionManager(List<Transaction> list) {
+     TransactionManager(List<Transaction> list) {
         super(list);
     }
 

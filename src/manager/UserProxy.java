@@ -1,6 +1,6 @@
-package controllers.manager;
+package manager;
 
-import controllers.CurrentUser;
+import model.CurrentUser;
 import model.Response;
 import model.UserModel;
 
@@ -15,7 +15,7 @@ public class UserProxy<Model extends UserModel> implements Manager<Model> {
 
     private Manager<Model> manager;
 
-    public UserProxy(Manager<Model> manager) {
+     UserProxy(Manager<Model> manager) {
         this.manager = manager;
     }
 

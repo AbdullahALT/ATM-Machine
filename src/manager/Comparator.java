@@ -1,4 +1,4 @@
-package controllers.manager;
+package manager;
 
 /**
  * Helps define the way we look for items in a list

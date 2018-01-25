@@ -1,4 +1,4 @@
-package controllers.manager;
+package manager;
 
 import model.Response;
 

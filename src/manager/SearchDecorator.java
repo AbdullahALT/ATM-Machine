@@ -1,4 +1,4 @@
-package controllers.manager;
+package manager;
 
 import model.Response;
 
@@ -9,13 +9,9 @@ public class SearchDecorator<DataModel> implements Manager<DataModel> {
     private Manager<DataModel> manager;
     private Comparator<DataModel> comparator;
 
-    public SearchDecorator(Manager<DataModel> manager, Comparator<DataModel> comparator) {
+    private SearchDecorator(Manager<DataModel> manager, Comparator<DataModel> comparator) {
         this.manager = manager;
         this.comparator = comparator;
-    }
-
-    public SearchDecorator(Manager<DataModel> manager) {
-        this.manager = manager;
     }
 
     @Override

@@ -1,6 +1,4 @@
-package controllers;
-
-import model.Login;
+package model;
 
 public class CurrentUser {
 
