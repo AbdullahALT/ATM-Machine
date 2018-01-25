@@ -12,12 +12,12 @@ import java.util.Date;
 public class AdminController {
 
     private Manager<Account> accountManager;
-    private Manager<Transaction> transferManager;
+    private Manager<Transaction> transactionManager;
     private Manager<Login> loginManager;
 
-    public AdminController(Manager<Account> accountManager, Manager<Transaction> transferManager, Manager<Login> loginManager) {
+    public AdminController(Manager<Account> accountManager, Manager<Transaction> transactionManager, Manager<Login> loginManager) {
         this.accountManager = accountManager;
-        this.transferManager = transferManager;
+        this.transactionManager = transactionManager;
         this.loginManager = loginManager;
     }
 
@@ -118,7 +118,7 @@ public class AdminController {
     //get transactions report
     public Manager<Transaction> getAccountTransactionsBetween(int userId, Date min, Date max){
 
-        SearchDecorator.Builder<Transaction> searchBuilder = new SearchDecorator.Builder<>(transferManager);
+        SearchDecorator.Builder<Transaction> searchBuilder = new SearchDecorator.Builder<>(transactionManager);
 
         searchBuilder.addQuery(u -> u.getUserId() == userId);
         searchBuilder.addQuery(u -> u.getDate().compareTo(min) >= 0);

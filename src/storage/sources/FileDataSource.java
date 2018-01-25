@@ -22,6 +22,8 @@ public class FileDataSource implements DataSource<String> {
                 builder.append("\n");
             });
 
+        } catch (FileNotFoundException e){
+            System.out.println("The file: " + path + " is not found, Will be created if applicable");
         } catch (IOException e){
             e.printStackTrace();
         }

@@ -28,13 +28,13 @@ public class TransactionManager extends DataManager<Transaction> {
         System.out.printf("%-20s%-20s%-20s%-20s%s%n", "Transaction Type", "User Id", "Name", "Amount", "Date");
         SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
 
-        getList().forEach(transfer ->
+        getList().forEach(transaction ->
                 System.out.printf("%-20s%-20s%-20s%-20s%-20s%n",
-                        transfer.getType(),
-                        transfer.getUserId(),
-                        transfer.getUserName(),
-                        transfer.getAmount(),
-                        formatter.format(transfer.getDate())
+                        transaction.getType(),
+                        transaction.getUserId(),
+                        transaction.getUserName(),
+                        transaction.getAmount(),
+                        formatter.format(transaction.getDate())
                 )
         );
     }
