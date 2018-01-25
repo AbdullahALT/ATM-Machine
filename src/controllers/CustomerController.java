@@ -1,21 +1,24 @@
 package controllers;
 
 import controllers.manager.Manager;
+import controllers.manager.SearchDecorator;
 import model.Account;
 import model.Response;
 import model.Transaction;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class CustomerController {
 
     private Manager<Account> accountManager;
-    private Manager<Transaction> transferManager;
+    private Manager<Transaction> transactionManager;
 
-    public CustomerController(Manager<Account> accountManager, Manager<Transaction> transferManager) {
+    public CustomerController(Manager<Account> accountManager, Manager<Transaction> transactionManager) {
         this.accountManager = accountManager;
-        this.transferManager = transferManager;
+        this.transactionManager = transactionManager;
     }
 
     public Response withdraw(double amount){
@@ -23,16 +26,51 @@ public class CustomerController {
 
         double balance = user.getBalance();
 
-        if(balance < amount)
-            return new Response(false, "You don't have enough balance");
+        Response checksResponse = withdrawChecks(balance, amount);
+
+        if(!checksResponse.isSuccess())
+            return checksResponse;
 
         user.setBalance(balance - amount);
 
         Response response = accountManager.update(user);
         if(response.isSuccess())
-            transferManager.insert(new Transaction(user.getUserId(), user.getName(), Transaction.Type.Withdraw, amount, new Date()));
+            transactionManager.insert(new Transaction(user.getUserId(), user.getName(), Transaction.Type.Withdraw, amount, new Date()));
 
         return response;
+    }
+
+    private Response withdrawChecks(double balance, double amount){
+        //Check for enough balance
+        if(balance < amount)
+            return new Response(false, "You don't have enough balance");
+
+        //Check for total withdrawals made today
+        SearchDecorator.Builder<Transaction> transactionSearch = new SearchDecorator.Builder<>(transactionManager);
+
+        transactionSearch.addQuery(transaction -> CurrentUser.instance().get().getUserId() == transaction.getUserId());
+        transactionSearch.addQuery(transaction -> Transaction.Type.Withdraw == transaction.getType());
+        transactionSearch.addQuery(transaction -> {
+            LocalDate transactionDate = transaction.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate todayDate = LocalDate.now();
+
+            return todayDate.isEqual(transactionDate);
+        });
+
+        Manager<Transaction> todayTransactions = transactionSearch.build();
+
+        double totalAmount = 0;
+        for(Transaction transaction : todayTransactions.getList()){
+            totalAmount = totalAmount + transaction.getAmount();
+        }
+
+        if((totalAmount) >= 20000)
+            return new Response(false, "You have exceeds the total amount allowed to withdraw in a day, please come tomorrow");
+
+        if((totalAmount + amount) >= 20000)
+            return new Response(false, "You can't withdraw " + amount + " because this will exceeds allowed daily withdrawal. You can only withdraw " + (20000 - totalAmount));
+
+        return new Response(true, null);
     }
 
     public Response transfer(double amount, int accountId){
@@ -57,7 +95,7 @@ public class CustomerController {
         accountManager.update(user);
         accountManager.update(recipient);
 
-        transferManager.insert(new Transaction(user.getUserId(), user.getName(), Transaction.Type.Transfer, amount, new Date()));
+        transactionManager.insert(new Transaction(user.getUserId(), user.getName(), Transaction.Type.Transfer, amount, new Date()));
 
         return new Response(true, "Transaction confirmed.");
     }
@@ -69,7 +107,7 @@ public class CustomerController {
         Response response = accountManager.update(user);
 
         if(response.isSuccess())
-            transferManager.insert(new Transaction(user.getUserId(), user.getName(), Transaction.Type.Deposit, amount, new Date()));
+            transactionManager.insert(new Transaction(user.getUserId(), user.getName(), Transaction.Type.Deposit, amount, new Date()));
 
         return response;
     }
